@@ -1,0 +1,53 @@
+<html>
+<style>
+button {
+	font-size: 16px;
+
+	width: 100px;
+	height: 50px;
+
+	margin: 10px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+
+	color: white;
+	background-color: #424242;
+}
+
+button:hover {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button:active {
+	color: #808080;
+}
+
+button#red {
+	background-color: red;
+}
+
+button#green {
+	background-color: green;
+}
+
+button#blue {
+	background-color: blue;
+}
+</style>
+<head>
+	<title>NeoPixel Demo</title>
+</head>
+<body>
+	<div>
+		<a href='red'><button id='red'>RED</button></a>
+		<a href='green'><button id='green'>GREEN</button></a>
+		<a href='blue'><button id='blue'>BLUE</button></a>
+		<a href='off'><button id='off'>OFF</button></a>
+	</div>
+	<div>
+		<a href='custom1'><button id='custom1'>CUSTOM 1</button></a>
+		<a href='custom2'><button id='custom2'>CUSTOM 2</button></a>
+	</div>
+</body>
+</html>
