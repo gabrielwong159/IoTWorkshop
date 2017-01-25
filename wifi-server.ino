@@ -29,6 +29,13 @@ uint32_t indigo = strip.Color(75,0,130);
 uint32_t violet = strip.Color(148,0,211);
 uint32_t black = strip.Color(0,0,0);
 
+/*
+ * 1.
+ * Using a color picker, choose a custom colour
+ * Create and name the colour here
+ */
+uint32_t myColor = strip.Color(255,127,31);
+
 void setup() {
   setupWifi();
   setupServer();
@@ -41,19 +48,24 @@ void loop() {
 
 /* ==================================================================== */
 
-void custom1() {  
-  uint32_t colors[7] = {red, orange, yellow, green, blue, indigo, violet};
-
-  for (int i=0; i<STRIP_LENGTH; i++) strip.setPixelColor(i, colors[i%7]);
-  strip.show();
+void custom1() {
+  /*
+   * 2.
+   * Making the entire strip show custom colour
+   */
+   strip.showColor(myColor);
 }
 
 void custom2() {
-  //alternating colours
-  uint32_t pink = strip.Color(255,192,203);
-  uint32_t purple = strip.Color(128,0,128);
-  
-  for (int i=0; i<STRIP_LENGTH; i++) strip.setPixelColor(i, i%2 ? pink : purple);
+  /*
+   * 3.
+   * Making the entire strip loop through a series of colours
+   */
+  uint32_t colors[] = {red, orange, yellow, green, blue, indigo, violet};
+
+
+  int n = sizeof(colors)/sizeof(colors[0]);
+  for (int i=0; i<STRIP_LENGTH; i++) strip.setPixelColor(i, colors[i%n]);
   strip.show();
 }
 
