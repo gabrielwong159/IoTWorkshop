@@ -10,11 +10,11 @@ In addition, you should have the [Arduino IDE](https://www.arduino.cc/en/main/so
 2. Extract the files from the downloaded ZIP.
 
 ### Setting up
-1. Open the folder and move `wifi.h` from `docs` to the same folder as `wifi-server.ino`
+1. Open the folder and rename 'wifi-template.h' to 'wifi.h'
 2. Open `wifi-server.ino`, and click on the tab named `wifi.h` to edit it
 3. Change `_ssid` and `_password` accordingly
 4. Set up your Arduino IDE for the NodeMCU according to the instructions [here]()
 5. Upload your code to the board.
 
 ## Running it
-Go to [http://esp8266.local/](http://esp8266.local/). Have fun!
+Go to [http://esp8266.local/](http://esp8266.local/) on your browser. Have fun!
