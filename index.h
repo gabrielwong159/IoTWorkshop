@@ -52,6 +52,7 @@ String file1=
 "	<div>\r\n"
 "		<a href='custom1'><button id='custom1'>CUSTOM 1</button></a>\r\n"
 "		<a href='custom2'><button id='custom2'>CUSTOM 2</button></a>\r\n"
+"		<a href='custom3'><button id='custom3'>CUSTOM 3</button></a>\r\n"
 "	</div>\r\n"
 "</body>\r\n"
 "</html>\r\n";

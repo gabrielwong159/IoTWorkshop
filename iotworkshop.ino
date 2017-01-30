@@ -13,6 +13,8 @@ const char* password = _password;
 ESP8266WebServer server(80);
 MDNSResponder mdns;
 
+boolean rainbow = false;
+
 const int STRIP_LENGTH = 60;
 const int PIN_NUMBER = 1; //D10
 const int LED_BRIGHTNESS = 31;
@@ -43,6 +45,7 @@ void setup() {
 }
 
 void loop() {
+  custom3();
   server.handleClient();
 }
 
@@ -53,7 +56,7 @@ void custom1() {
    * 2.
    * Making the entire strip show custom colour
    */
-   strip.showColor(myColor);
+   showColor(myColor);
 }
 
 void custom2() {
@@ -67,6 +70,22 @@ void custom2() {
   int n = sizeof(colors)/sizeof(colors[0]);
   for (int i=0; i<STRIP_LENGTH; i++) strip.setPixelColor(i, colors[i%n]);
   strip.show();
+}
+
+void custom3() {
+  uint32_t colors[] = {violet, indigo, blue, green, yellow, orange, red};
+  int n = sizeof(colors)/sizeof(colors[0]);
+
+  for (int i=0; i<STRIP_LENGTH; i++) {
+    for (int j=0; j<STRIP_LENGTH; j++) {
+      server.handleClient();
+      if(!rainbow) break;
+      
+      strip.setPixelColor((i+j)%STRIP_LENGTH, colors[j%n]);
+    }
+    strip.show();
+    delay(100);
+  }
 }
 
 /* ==================================================================== */
@@ -90,37 +109,42 @@ void setupWifi() {
 
 void setupServer() {
   server.on("/", [](){
-    server.send(200, "text/html", page);
+    servePage();
   });
   
   server.on("/red", [](){
-    server.send(200, "text/html", page);
+    servePage();
     showColor(red);
   });
 
   server.on("/green", [](){
-    server.send(200, "text/html", page);
+    servePage();
     showColor(green);
   });
 
   server.on("/blue", [](){
-    server.send(200, "text/html", page);
+    servePage();
     showColor(blue);
   });
 
   server.on("/off", [](){
-    server.send(200, "text/html", page);
+    servePage();
     showColor(black);
   });
 
   server.on("/custom1", [](){
-    server.send(200, "text/html", page);
+    servePage();
     custom1();
   });
 
   server.on("/custom2", [](){
-    server.send(200, "text/html", page);
+    servePage();
     custom2();
+  });
+
+  server.on("/custom3", [](){
+    servePage();
+    rainbow = true;
   });
   
   server.begin();
@@ -130,6 +154,11 @@ void setupLed() {
   strip.begin();
   strip.show();
   strip.setBrightness(LED_BRIGHTNESS);
+}
+
+void servePage() {
+  rainbow = false;
+  server.send(200, "text/html", page);
 }
 
 void showColor(uint32_t color) {
