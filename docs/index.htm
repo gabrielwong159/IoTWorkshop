@@ -37,6 +37,11 @@ button#green {
 button#blue {
 	background-color: blue;
 }
+
+button#rainbow {
+	color: black;
+	background: linear-gradient(-45deg, #ec5f67, #f99157, #fac863, #99c794, #5fb3b3, #6699cc, #c594c5);
+}
 </style>
 <head>
 	<title>NeoPixel Demo</title>
@@ -46,12 +51,12 @@ button#blue {
 		<a href='red'><button id='red'>RED</button></a>
 		<a href='green'><button id='green'>GREEN</button></a>
 		<a href='blue'><button id='blue'>BLUE</button></a>
+		<a href='rainbow'><button id='rainbow'>RAINBOW</button></a>
 		<a href='off'><button id='off'>OFF</button></a>
 	</div>
 	<div>
 		<a href='custom1'><button id='custom1'>CUSTOM 1</button></a>
 		<a href='custom2'><button id='custom2'>CUSTOM 2</button></a>
-		<a href='custom3'><button id='custom3'>CUSTOM 3</button></a>
 	</div>
 </body>
 </html>

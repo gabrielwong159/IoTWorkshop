@@ -13,7 +13,7 @@ const char* password = _password;
 ESP8266WebServer server(80);
 MDNSResponder mdns;
 
-boolean rainbow = false;
+boolean showRainbow = false;
 
 const int STRIP_LENGTH = 60;
 const int PIN_NUMBER = 1; //D10
@@ -31,12 +31,7 @@ uint32_t indigo = strip.Color(75,0,130);
 uint32_t violet = strip.Color(148,0,211);
 uint32_t black = strip.Color(0,0,0);
 
-/*
- * 1.
- * Using a color picker, choose a custom colour
- * Create and name the colour here
- */
-uint32_t myColor = strip.Color(255,127,31);
+
 
 void setup() {
   setupWifi();
@@ -45,13 +40,19 @@ void setup() {
 }
 
 void loop() {
-  custom3();
-  server.handleClient();
+  rainbow();
 }
 
 /* ==================================================================== */
 
 void custom1() {
+  /*
+ * 1.
+ * Using a color picker, choose a custom colour
+ * Create and name the colour here
+ */
+  uint32_t myColor = strip.Color(255,127,0);
+  
   /*
    * 2.
    * Making the entire strip show custom colour
@@ -72,21 +73,7 @@ void custom2() {
   strip.show();
 }
 
-void custom3() {
-  uint32_t colors[] = {violet, indigo, blue, green, yellow, orange, red};
-  int n = sizeof(colors)/sizeof(colors[0]);
 
-  for (int i=0; i<STRIP_LENGTH; i++) {
-    for (int j=0; j<STRIP_LENGTH; j++) {
-      server.handleClient();
-      if(!rainbow) break;
-      
-      strip.setPixelColor((i+j)%STRIP_LENGTH, colors[j%n]);
-    }
-    strip.show();
-    delay(100);
-  }
-}
 
 /* ==================================================================== */
 
@@ -127,6 +114,11 @@ void setupServer() {
     showColor(blue);
   });
 
+  server.on("/rainbow", [](){
+    servePage();
+    showRainbow = true;
+  });
+
   server.on("/off", [](){
     servePage();
     showColor(black);
@@ -141,11 +133,6 @@ void setupServer() {
     servePage();
     custom2();
   });
-
-  server.on("/custom3", [](){
-    servePage();
-    rainbow = true;
-  });
   
   server.begin();
 }
@@ -157,7 +144,7 @@ void setupLed() {
 }
 
 void servePage() {
-  rainbow = false;
+  showRainbow = false;
   server.send(200, "text/html", page);
 }
 
@@ -169,4 +156,20 @@ void showColor(uint32_t color) {
 void showColor(uint8_t r, uint8_t g, uint8_t b) {
   for (int i=0; i<STRIP_LENGTH; i++) strip.setPixelColor(i,r,g,b);
   strip.show();
+}
+
+void rainbow() {
+  uint32_t colors[] = {violet, indigo, blue, green, yellow, orange, red};
+  int n = sizeof(colors)/sizeof(colors[0]);
+
+  for (int i=0; i<STRIP_LENGTH; i++) {
+    for (int j=0; j<STRIP_LENGTH; j++) {
+      server.handleClient();
+      if(!showRainbow) break;
+      
+      strip.setPixelColor((i+j)%STRIP_LENGTH, colors[j%n]);
+    }
+    strip.show();
+    delay(100);
+  }
 }
