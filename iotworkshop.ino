@@ -15,7 +15,7 @@ MDNSResponder mdns;
 
 boolean showRainbow = false;
 
-const int STRIP_LENGTH = 60;
+const int STRIP_LENGTH = 30;
 const int PIN_NUMBER = 1; //D10
 const int LED_BRIGHTNESS = 31;
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(STRIP_LENGTH, PIN_NUMBER);
