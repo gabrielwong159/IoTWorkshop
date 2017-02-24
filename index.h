@@ -4,7 +4,7 @@
 String file1=
 "<!DOCTYPE>\r\n"
 "<html>\r\n"
-"	<head><title>NeoPixel Demo</title></head>\r\n"
+"	<head><title>ISTD Open House 2017</title></head>\r\n"
 "	<style>\r\n"
 "		@import url('https://fonts.googleapis.com/css?family=Open+Sans');\r\n"
 "		body{\r\n"
