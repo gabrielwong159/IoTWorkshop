@@ -75,7 +75,6 @@ String file1=
 "				</div>\r\n"
 "				<div class = \"right-buttons\">\r\n"
 "					<a href=\"custom1\"><p id = \"border\">Custom 1</p></a>\r\n"
-"					<a href=\"custom2\"><p id = \"border\">Custom 2</p></a>\r\n"
 "					<a href=\"off\"><p id=\"border\">Off</p></a>\r\n"
 "				</div>\r\n"
 "			</div>\r\n"

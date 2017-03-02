@@ -17,7 +17,7 @@ boolean showRainbow = false;
 
 const int STRIP_LENGTH = 8;
 const int PIN_NUMBER = 1; //D10
-const int LED_BRIGHTNESS = 31;
+const int LED_BRIGHTNESS = 255;
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(STRIP_LENGTH, PIN_NUMBER);
 
 String page = file1;
@@ -47,32 +47,26 @@ void loop() {
 
 void custom1() {
   /*
- * 1.
- * Using a color picker, choose a custom colour
- * Create and name the colour here
- */
-  uint32_t myColor = strip.Color(255,127,0);
-  
-  /*
-   * 2.
-   * Making the entire strip show custom colour
+   * 1.
+   * Using a color picker, choose a custom colour
+   * Create and name the colour here
    */
-   showColor(myColor);
-}
+  uint32_t myColor1 = strip.Color(255, 127, 0);
+  uint32_t myColor2 = strip.Color(0, 127, 255);
 
-void custom2() {
+  int num = random(2);
+
   /*
-   * 3.
-   * Making the entire strip loop through a series of colours
+   * 2. using if else
+   * 3. using functions
    */
-  uint32_t colors[] = {red, orange, yellow, green, blue, indigo, violet};
-
-
-  int n = sizeof(colors)/sizeof(colors[0]);
-  for (int i=0; i<STRIP_LENGTH; i++) strip.setPixelColor(i, colors[i%n]);
-  strip.show();
+  if (num == 0) {
+    showColor(myColor1);
+  }
+  else {
+    showColor(myColor2);
+  }
 }
-
 
 
 /* ==================================================================== */
@@ -129,11 +123,6 @@ void setupServer() {
     custom1();
   });
 
-  server.on("/custom2", [](){
-    servePage();
-    custom2();
-  });
-  
   server.begin();
 }
 
