@@ -2,9 +2,12 @@
 #include <Adafruit_NeoPixel.h>
 
 #include "index.h"
-
+/*
 String wifiName = "<Enter WiFi name here>";
 const char WiFiAPPSK[] = "<Enter password here>";
+*/
+String wifiName = "ISTD25";
+const char WiFiAPPSK[] = "password";
 
 const int STRIP_LENGTH = 8;
 const int PIN_NUMBER = 1; //D10
