@@ -2,6 +2,8 @@
 #define header_h
 
 String file1=
+"HTTP/1.1 200 OK\r\n"
+"Content-Type: text/html\r\n\r\n"
 "<!DOCTYPE>\r\n"
 "<html>\r\n"
 "	<head><title>ISTD Workshop</title></head>\r\n"
