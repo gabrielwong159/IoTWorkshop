@@ -3,9 +3,8 @@
 
 #include "index.h"
 
-//Variable Assignment
-String wifiName = "Gabriel's Wifi";
-const char WiFiAPPSK[] = "password1";
+String wifiName = "Insert WiFi name here";
+const char WiFiAPPSK[] = "Insert password here";
 
 const int STRIP_LENGTH = 8;
 const int PIN_NUMBER = 1; //D10
@@ -22,10 +21,12 @@ uint32_t violet = strip.Color(148,0,211);
 uint32_t black = strip.Color(0,0,0);
 
 void custom1() {
-  uint32_t myColor1 = strip.Color(255, 127, 0); //call colour function
+  // creates a colour with values - red, green, and blue
+  // note that values are between 0 and 255!
+  
+  uint32_t myColor1 = strip.Color(255, 127, 0); // this means red=255, blue=127, green=0
   uint32_t myColor2 = strip.Color(0, 127, 255);
   uint32_t myColors[] = {red, green, blue};
-  //use loop to iterate through mycolors[]
 
   int num = random(2);
   
