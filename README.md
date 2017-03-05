@@ -17,3 +17,13 @@ Installation instructions for the NeoPixel library can be found [here](https://l
 2. Set up your Arduino IDE for the NodeMCU according to the instructions [here]()
 3. Key in your desired WiFi credentials.
 4. Upload your code to the board.
+
+### Getting started
+1. Connect to the WiFi using the name and password you have set.
+2. Go to [192.168.4.1](http://192.168.4.1) on your browser.
+3. Enjoy!
+
+### Questions?
+Feel free to leave any questions you have in the 'Issues' section above.
+
+Hope you enjoyed the workshop!

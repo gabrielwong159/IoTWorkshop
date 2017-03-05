@@ -23,22 +23,49 @@ uint32_t black = strip.Color(0,0,0);
 void custom1() {
   // creates a colour with values - red, green, and blue
   // note that values are between 0 and 255!
-  
-  uint32_t myColor1 = strip.Color(255, 127, 0); // this means red=255, blue=127, green=0
-  uint32_t myColor2 = strip.Color(0, 127, 255);
-  uint32_t myColors[] = {red, green, blue};
+  uint32_t myColor1 = strip.Color(255, 127, 0);
+  uint32_t myColor2 = green;
+  uint32_t myColor3 = indigo;
 
-  int num = random(2);
+  // Below are some functionalities covered in the workshop
+  // Choose the one you want, and comment the other 2, by selecting the text, followed by right-clicking and choose 'Comment'
+
+  /* --- This section allows Custom1 to randomly choose between two colours --- */
   
+  int num = random(2);
+
   if (num == 0) {
     showColor(myColor1);
   }
   else {
     showColor(myColor2);
   }
+
+  /* ------------------------------------------------------------------------- */
+
+  /* --- This section shows 3 different colours, with 1 second of delay in between each --- */  
+
+  showColor(myColor1);
+  delay(1000); // note that delay is in milliseconds! that means that delay(1000) is a 1 second delay
+  showColor(myColor2);
+  delay(1000);
+  showColor(myColor3);
+  delay(1000);
+
+  /* -------------------------------------------------------------------------------------- */
+
+  /* --- This section allows you to show any number of colours, with 1 second of delay in between each --- */
+  uint32_t myColors[] = {red, blue, green, orange, indigo}; // place any number or sequence of colours inside here
+  
+  for (int i=0;i<5;i++){ // instead of 5, remember to put in the number of colours you have inside myColors
+    showColor(myColors[i]);
+    delay(1000);
+  }
+
+  /* -------------------------------------------------------------------------------------- */
 }
 
-/* ==================================================================================== */
+/* ================================================================================================= */
 
 WiFiServer server(80);
 
