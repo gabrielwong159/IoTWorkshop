@@ -4,7 +4,7 @@
 #include "index.h"
 
 String wifiName = "Insert WiFi name here";
-const char WiFiAPPSK[] = "Insert password here";
+const char WiFiAPPSK[] = "password";
 
 const int STRIP_LENGTH = 8;
 const int PIN_NUMBER = 1; //D10
